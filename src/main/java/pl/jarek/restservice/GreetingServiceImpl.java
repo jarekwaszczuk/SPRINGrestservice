@@ -14,12 +14,12 @@ public class GreetingServiceImpl implements GreetingService {
 
     @Override
     public Greeting findById(Long id) {
-        return new Greeting(id, "findById", LocalTime.now());
+        return new Greeting(id, "findById");
     }
 
     @Override
     public Greeting deleteById(Long id) {
-        return new Greeting(id, "deleteById", LocalTime.now());
+        return new Greeting(id, "deleteById");
     }
 
     @Override
@@ -29,15 +29,15 @@ public class GreetingServiceImpl implements GreetingService {
 
     @Override
     public Greeting update(Long id, Greeting greeting) {
-        return new Greeting(id, "update", LocalTime.now());
+        return new Greeting(id, "update");
     }
 
     @Override
     public List<Greeting> findAll() {
         List<Greeting> greetingList = new ArrayList<>();
-        greetingList.add(new Greeting(1l, "FindAll", LocalTime.now()));
-        greetingList.add(new Greeting(2l, "FindAll", LocalTime.now()));
-        greetingList.add(new Greeting(3l, "FindAll", LocalTime.now()));
+        greetingList.add(new Greeting(1l, "FindAll"));
+        greetingList.add(new Greeting(2l, "FindAll"));
+        greetingList.add(new Greeting(3l, "FindAll"));
         return greetingList;
     }
 }

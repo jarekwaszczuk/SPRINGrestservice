@@ -10,10 +10,10 @@ public class Greeting {
     public Greeting(){
     }
 
-    public Greeting(Long id, String name, LocalTime localTime) {
+    public Greeting(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.localTime = localTime;
+        this.localTime = LocalTime.now();
     }
 
     public Long getId() {
