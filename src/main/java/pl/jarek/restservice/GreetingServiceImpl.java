@@ -1,38 +1,43 @@
 package pl.jarek.restservice;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class GreetingServiceImpl implements GreetingService {
 
-    @Autowired
-    private final GreetingRepository greetingRepository;
+//    @Autowired
+//    private final GreetingRepository greetingRepository;
 
     @Override
     public Greeting findById(Long id) {
-        return null;
+        return new Greeting(id, "findById", LocalTime.now());
     }
 
     @Override
     public Greeting deleteById(Long id) {
-        return null;
+        return new Greeting(id, "deleteById", LocalTime.now());
     }
 
     @Override
     public Greeting create(Greeting greeting) {
-        return null;
+        return greeting;
     }
 
     @Override
     public Greeting update(Long id, Greeting greeting) {
-        return null;
+        return new Greeting(id, "update", LocalTime.now());
     }
 
     @Override
     public List<Greeting> findAll() {
-        return null;
+        List<Greeting> greetingList = new ArrayList<>();
+        greetingList.add(new Greeting(1l, "FindAll", LocalTime.now()));
+        greetingList.add(new Greeting(2l, "FindAll", LocalTime.now()));
+        greetingList.add(new Greeting(3l, "FindAll", LocalTime.now()));
+        return greetingList;
     }
 }

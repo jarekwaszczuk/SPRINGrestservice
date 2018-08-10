@@ -9,9 +9,8 @@ import java.util.concurrent.atomic.AtomicLong;
 @RequestMapping("/greetings")
 public class GreetingController {
 
-    private final GreetingService greetingService;
+    private final GreetingService greetingService = new GreetingServiceImpl();
 
-    private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
     // GET localhost:7777/greetings?name=Jarosław
@@ -37,7 +36,7 @@ public class GreetingController {
     }
 
     @PutMapping("/{id}")
-    public void update(@RequestParam(value = "id") Long id, @RequestBody Greeting greeting) {
+    public void update(@PathVariable("id") Long id, @RequestBody Greeting greeting) {
         greetingService.update(id, greeting);
     }
 
