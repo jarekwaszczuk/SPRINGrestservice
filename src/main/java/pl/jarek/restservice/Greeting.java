@@ -7,6 +7,9 @@ public class Greeting {
     private String name;
     private LocalTime localTime;
 
+    public Greeting(){
+    }
+
     public Greeting(Long id, String name) {
         this.id = id;
         this.name = name;
