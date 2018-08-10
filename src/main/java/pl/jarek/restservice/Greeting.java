@@ -2,18 +2,15 @@ package pl.jarek.restservice;
 
 import java.time.LocalTime;
 
-// GET localhost:7777/greeting?name=Jarosław
-
-
 public class Greeting {
     private Long id;
     private String name;
     private LocalTime localTime;
 
-    public Greeting(Long id, String name, LocalTime localTime) {
+    public Greeting(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.localTime = localTime;
+        this.localTime = LocalTime.now();
     }
 
     public Long getId() {
