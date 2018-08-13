@@ -39,7 +39,6 @@ public class ArrayListGreetingRepository implements GreetingRepository {
             greeting.setId(findMaxId() + 1);
             greetings.add(greeting);
         } else {
-            Greeting existingGreeting = findById(greeting.getId());
             findById(greeting.getId())
                     .ifPresent(existingGreeting -> {
                         existingGreeting.setContent(greeting.getContent());

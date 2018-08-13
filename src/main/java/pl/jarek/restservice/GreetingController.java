@@ -1,5 +1,7 @@
 package pl.jarek.restservice;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +22,10 @@ public class GreetingController {
     // GET localhost:7777/greetings?name=Jarosław
 
     @GetMapping(value = "/{id}")
-    public Greeting findById(@PathVariable Long id) {
-        return greetingService.findById(id);
+    public ResponseEntity<Greeting> findById(@PathVariable Long id) {
+        return greetingService.findById(id)
+                .map(greeting -> new ResponseEntity<>(greeting, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping(value = "/{id}")

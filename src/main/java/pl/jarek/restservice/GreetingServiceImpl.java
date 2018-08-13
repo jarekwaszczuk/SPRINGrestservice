@@ -35,9 +35,9 @@ public class GreetingServiceImpl implements GreetingService {
     @Override
     public void update(Long id, Greeting updateGreeting) {
         greetingRepository.findById(id).ifPresent(greeting -> {
-            greeting.setContent(updateGreeting.getContent();
-            greeting.setLocalTime(LocalTime.now();
-            greetingRepository.save(greeting)
+            greeting.setContent(updateGreeting.getContent());
+            greeting.setLocalTime(LocalTime.now());
+            greetingRepository.save(greeting);
         });
     }
 
