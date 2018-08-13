@@ -29,9 +29,8 @@ public class ArrayListGreetingRepository implements GreetingRepository {
 
     @Override
     public void deleteById(Long id) {
-        for (Greeting greeting : greetings) {
-            if (id.equals(greeting.getId())) greetings.remove(greeting);
-        }
+        findById(id)
+                .ifPresent(greeting -> greetings.remove(greeting));
     }
 
     @Override
