@@ -4,13 +4,13 @@ import java.util.List;
 
 public interface GreetingService {
 
-    public Greeting findById(Long id);
+    void findById(Long id);
 
-    public Greeting deleteById(Long id);
+    void deleteById(Long id);
 
-    public Greeting create(Greeting greeting);
+    void create(Greeting greeting);
 
-    public Greeting update(Long id, Greeting greeting);
+    void update(Long id, Greeting greeting);
 
-    public List<Greeting> findAll();
+    List<Greeting> findAll();
 }

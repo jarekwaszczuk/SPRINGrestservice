@@ -11,31 +11,31 @@ public class ArrayListGreetingRepository implements GreetingRepository {
     //TODO wszystko z GreetingRepository
     //TODO greetingi w array-liście
 
-    private List<Greeting> greetingList = new ArrayList();
+    private List<Greeting> greetings = new ArrayList();
 
     @Override
     public Greeting findById(Long id) {
+        for(Greeting greeting: greetings){
+            if(id.equals(greeting.getId())) return greeting;
+        }
         return null;
     }
 
     @Override
-    public Greeting deleteById(Long id) {
-        return null;
+    public void deleteById(Long id) {
+        for(Greeting greeting: greetings){
+            if(id.equals(greeting.getId())) greetings.remove(greeting);
+        }
     }
 
     @Override
-    public Greeting create(Greeting greeting) {
-        return null;
-    }
-
-    @Override
-    public Greeting update(Long id, Greeting greeting) {
-        return null;
+    public void save(Greeting greeting) {
+        greetings.add(greeting);
     }
 
     @Override
     public List<Greeting> findAll() {
-        return null;
+        return greetings;
     }
 
 }

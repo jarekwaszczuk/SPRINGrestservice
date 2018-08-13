@@ -3,41 +3,44 @@ package pl.jarek.restservice;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class GreetingServiceImpl implements GreetingService {
 
-//    @Autowired
-//    private final GreetingRepository greetingRepository;
 
-    @Override
-    public Greeting findById(Long id) {
-        return new Greeting(id, "findById");
+    private final GreetingRepository greetingRepository;
+
+    public GreetingServiceImpl(GreetingRepository greetingRepository) {
+        this.greetingRepository = greetingRepository;
     }
 
     @Override
-    public Greeting deleteById(Long id) {
-        return new Greeting(id, "deleteById");
+    public void findById(Long id) {
+        greetingRepository.findById(id);
     }
 
     @Override
-    public Greeting create(Greeting greeting) {
-        return greeting;
+    public void deleteById(Long id) {
+        greetingRepository.deleteById(id);
     }
 
     @Override
-    public Greeting update(Long id, Greeting greeting) {
-        return new Greeting(id, "update");
+    public void create(Greeting greeting) {
+        greeting.setLocalTime(LocalTime.now());
+        greetingRepository.save(greeting);
+    }
+
+    @Override
+    public void update(Long id, Greeting updateGreeting) {
+        Greeting greeting = greetingRepository.findById(id);
+        greeting.setContent(updateGreeting.getContent());
+        greeting.setLocalTime(LocalTime.now());
+        greetingRepository.save(updateGreeting);
     }
 
     @Override
     public List<Greeting> findAll() {
-        List<Greeting> greetingList = new ArrayList<>();
-        greetingList.add(new Greeting(1l, "FindAll"));
-        greetingList.add(new Greeting(2l, "FindAll"));
-        greetingList.add(new Greeting(3l, "FindAll"));
-        return greetingList;
+        return greetingRepository.findAll();
     }
 }

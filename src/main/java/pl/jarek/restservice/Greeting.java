@@ -4,15 +4,15 @@ import java.time.LocalTime;
 
 public class Greeting {
     private Long id;
-    private String name;
+    private String content;
     private LocalTime localTime;
 
     public Greeting(){
     }
 
-    public Greeting(Long id, String name) {
+    public Greeting(Long id, String content) {
         this.id = id;
-        this.name = name;
+        this.content = content;
         this.localTime = LocalTime.now();
     }
 
@@ -24,12 +24,12 @@ public class Greeting {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getContent() {
+        return content;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public LocalTime getLocalTime() {

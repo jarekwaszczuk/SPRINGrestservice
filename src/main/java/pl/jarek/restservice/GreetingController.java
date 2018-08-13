@@ -9,25 +9,29 @@ import java.util.concurrent.atomic.AtomicLong;
 @RequestMapping("/greetings")
 public class GreetingController {
 
-    private final GreetingService greetingService = new GreetingServiceImpl();
+    private final GreetingService greetingService;
+
+    public GreetingController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
 
     private final AtomicLong counter = new AtomicLong();
 
     // GET localhost:7777/greetings?name=Jarosław
 
     @GetMapping(value = "/{id}")
-    public Greeting findById(@PathVariable Long id) {
-        return greetingService.findById(id);
+    public void findById(@PathVariable Long id) {
+        greetingService.findById(id);
     }
 
     @DeleteMapping(value = "/{id}")
-    public Greeting deleteById(@PathVariable Long id) {
-        return greetingService.deleteById(id);
+    public void deleteById(@PathVariable Long id) {
+        greetingService.deleteById(id);
     }
 
     @PostMapping(value = "/")
-    public Greeting create(@RequestBody Greeting greeting) {
-        return greetingService.create(greeting);
+    public void create(@RequestBody Greeting greeting) {
+        greetingService.create(greeting);
     }
 
     @GetMapping("/")
