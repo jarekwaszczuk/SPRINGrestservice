@@ -15,27 +15,42 @@ public class ArrayListGreetingRepository implements GreetingRepository {
 
     @Override
     public Greeting findById(Long id) {
-        for(Greeting greeting: greetings){
-            if(id.equals(greeting.getId())) return greeting;
+        for (Greeting greeting : greetings) {
+            if (greeting.getId().equals(id)) return greeting;
         }
         return null;
     }
 
     @Override
     public void deleteById(Long id) {
-        for(Greeting greeting: greetings){
-            if(id.equals(greeting.getId())) greetings.remove(greeting);
+        for (Greeting greeting : greetings) {
+            if (id.equals(greeting.getId())) greetings.remove(greeting);
         }
     }
 
     @Override
     public void save(Greeting greeting) {
-        greetings.add(greeting);
+        if (greeting.getId() == null) {
+            greeting.setId(findMaxId() + 1);
+            greetings.add(greeting);
+        } else {
+            Greeting existingGreeting = findById(greeting.getId());
+            existingGreeting.setContent(greeting.getContent());
+            existingGreeting.setLocalTime(greeting.getLocalTime());
+        }
     }
 
     @Override
     public List<Greeting> findAll() {
         return greetings;
+    }
+
+    private Long findMaxId() {
+        Long maxId = 0l;
+        for (Greeting greeting : greetings) {
+            if (greeting.getId().compareTo(maxId) > 0) maxId = greeting.getId();
+        }
+        return maxId;
     }
 
 }
