@@ -20,8 +20,8 @@ public class GreetingController {
     // GET localhost:7777/greetings?name=Jarosław
 
     @GetMapping(value = "/{id}")
-    public void findById(@PathVariable Long id) {
-        greetingService.findById(id);
+    public Greeting findById(@PathVariable Long id) {
+        return greetingService.findById(id);
     }
 
     @DeleteMapping(value = "/{id}")

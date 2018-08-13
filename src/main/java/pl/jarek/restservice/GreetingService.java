@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface GreetingService {
 
-    void findById(Long id);
+    Greeting findById(Long id);
 
     void deleteById(Long id);
 

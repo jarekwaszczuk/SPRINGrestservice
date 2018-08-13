@@ -16,8 +16,8 @@ public class GreetingServiceImpl implements GreetingService {
     }
 
     @Override
-    public void findById(Long id) {
-        greetingRepository.findById(id);
+    public Greeting findById(Long id) {
+        return greetingRepository.findById(id);
     }
 
     @Override
