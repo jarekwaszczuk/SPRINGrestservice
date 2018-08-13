@@ -27,7 +27,7 @@ public class GreetingServiceImpl implements GreetingService {
     }
 
     @Override
-    public void create(Greeting greeting) {
+    public Greeting create(Greeting greeting) {
         greeting.setLocalTime(LocalTime.now());
         greetingRepository.save(greeting);
     }

@@ -34,8 +34,8 @@ public class GreetingController {
     }
 
     @PostMapping(value = "/")
-    public void create(@RequestBody Greeting greeting) {
-        greetingService.create(greeting);
+    public ResponseEntity<Greeting> create(@RequestBody Greeting greeting) {
+        return new ResponseEntity<>(greetingService.create(greeting), HttpStatus.CREATED);
     }
 
     @GetMapping("/")

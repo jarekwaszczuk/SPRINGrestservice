@@ -9,7 +9,7 @@ public interface GreetingService {
 
     void deleteById(Long id);
 
-    void create(Greeting greeting);
+    Greeting create(Greeting greeting);
 
     void update(Long id, Greeting greeting);
 

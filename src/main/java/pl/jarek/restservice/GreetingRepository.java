@@ -9,7 +9,7 @@ public interface GreetingRepository {
 
     void deleteById(Long id);
 
-    void save(Greeting greeting);
+    Greeting save(Greeting greeting);
 
     List<Greeting> findAll();
 
