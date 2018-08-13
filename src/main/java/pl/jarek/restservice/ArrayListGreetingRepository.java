@@ -40,8 +40,11 @@ public class ArrayListGreetingRepository implements GreetingRepository {
             greetings.add(greeting);
         } else {
             Greeting existingGreeting = findById(greeting.getId());
-            existingGreeting.setContent(greeting.getContent());
-            existingGreeting.setLocalTime(greeting.getLocalTime());
+            findById(greeting.getId())
+                    .ifPresent(existingGreeting -> {
+                        existingGreeting.setContent(greeting.getContent());
+                        existingGreeting.setLocalTime(greeting.getLocalTime());
+                    });
         }
     }
 
@@ -51,11 +54,9 @@ public class ArrayListGreetingRepository implements GreetingRepository {
     }
 
     private Long findMaxId() {
-        Long maxId = 0l;
-        for (Greeting greeting : greetings) {
-            if (greeting.getId().compareTo(maxId) > 0) maxId = greeting.getId();
-        }
-        return maxId;
+        return greetings.stream()
+                .mapToLong(greeting -> greeting.getId())
+                .max()
+                .orElse(0L);
     }
-
 }

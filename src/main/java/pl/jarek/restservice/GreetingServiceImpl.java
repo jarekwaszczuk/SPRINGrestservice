@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GreetingServiceImpl implements GreetingService {
@@ -16,7 +17,7 @@ public class GreetingServiceImpl implements GreetingService {
     }
 
     @Override
-    public Greeting findById(Long id) {
+    public Optional<Greeting> findById(Long id) {
         return greetingRepository.findById(id);
     }
 
@@ -33,10 +34,11 @@ public class GreetingServiceImpl implements GreetingService {
 
     @Override
     public void update(Long id, Greeting updateGreeting) {
-        Greeting greeting = greetingRepository.findById(id);
-        greeting.setContent(updateGreeting.getContent());
-        greeting.setLocalTime(LocalTime.now());
-        greetingRepository.save(greeting);
+        greetingRepository.findById(id).ifPresent(greeting -> {
+            greeting.setContent(updateGreeting.getContent();
+            greeting.setLocalTime(LocalTime.now();
+            greetingRepository.save(greeting)
+        });
     }
 
     @Override
