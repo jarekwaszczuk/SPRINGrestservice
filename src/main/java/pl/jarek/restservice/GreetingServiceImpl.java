@@ -36,7 +36,7 @@ public class GreetingServiceImpl implements GreetingService {
         Greeting greeting = greetingRepository.findById(id);
         greeting.setContent(updateGreeting.getContent());
         greeting.setLocalTime(LocalTime.now());
-        greetingRepository.save(updateGreeting);
+        greetingRepository.save(greeting);
     }
 
     @Override
