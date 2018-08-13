@@ -1,10 +1,11 @@
 package pl.jarek.restservice;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface GreetingRepository {
 
-    Greeting findById(Long id);
+    Optional<Greeting> findById(Long id);
 
     void deleteById(Long id);
 

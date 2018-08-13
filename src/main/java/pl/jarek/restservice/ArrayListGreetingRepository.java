@@ -1,9 +1,11 @@
 package pl.jarek.restservice;
 
+import ch.qos.logback.core.pattern.parser.OptionTokenizer;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ArrayListGreetingRepository implements GreetingRepository {
@@ -14,11 +16,15 @@ public class ArrayListGreetingRepository implements GreetingRepository {
     private List<Greeting> greetings = new ArrayList();
 
     @Override
-    public Greeting findById(Long id) {
-        for (Greeting greeting : greetings) {
-            if (greeting.getId().equals(id)) return greeting;
-        }
-        return null;
+    public Optional<Greeting> findById(Long id) {
+        return greetings.stream()
+                .filter(greeting -> greeting.getId().equals(id))
+                .findFirst();
+
+//        for (Greeting greeting : greetings) {
+//            if (greeting.getId().equals(id)) return greeting;
+//        }
+//        return null;
     }
 
     @Override
