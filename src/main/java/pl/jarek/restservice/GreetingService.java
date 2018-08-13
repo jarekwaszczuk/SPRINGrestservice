@@ -11,7 +11,7 @@ public interface GreetingService {
 
     Greeting create(Greeting greeting);
 
-    void update(Long id, Greeting greeting);
+    void update(Long id, Greeting updatedGreeting);
 
     List<Greeting> findAll();
 }
