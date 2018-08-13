@@ -29,7 +29,7 @@ public class GreetingServiceImpl implements GreetingService {
     @Override
     public Greeting create(Greeting greeting) {
         greeting.setLocalTime(LocalTime.now());
-        greetingRepository.save(greeting);
+        return greetingRepository.save(greeting);
     }
 
     @Override

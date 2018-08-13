@@ -44,9 +44,7 @@ public class GreetingController {
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable("id") Long id, @RequestBody Greeting greeting) {
-        greetingService.update(id, greeting);
+    public void update(@PathVariable("id") Long id, @RequestBody Greeting updatedGreeting) {
+        greetingService.update(id, updatedGreeting);
     }
-
-
 }

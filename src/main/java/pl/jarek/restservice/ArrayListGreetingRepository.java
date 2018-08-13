@@ -34,17 +34,17 @@ public class ArrayListGreetingRepository implements GreetingRepository {
     }
 
     @Override
-    public void save(Greeting greeting) {
+    public Greeting save(Greeting greeting) {
         if (greeting.getId() == null) {
             greeting.setId(findMaxId() + 1);
             greetings.add(greeting);
-        } else {
-            findById(greeting.getId())
-                    .ifPresent(existingGreeting -> {
-                        existingGreeting.setContent(greeting.getContent());
-                        existingGreeting.setLocalTime(greeting.getLocalTime());
-                    });
+            return greeting;
         }
+
+        Greeting existingGreeting = findById(greeting.getId()).get();
+        existingGreeting.setContent(greeting.getContent());
+        existingGreeting.setLocalTime(greeting.getLocalTime());
+        return existingGreeting;
     }
 
     @Override
